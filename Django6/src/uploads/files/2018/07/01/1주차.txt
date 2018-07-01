@@ -1,0 +1,18 @@
+blog.naver.com/shg955 -> Django -> 자료 -> 2p
+파이썬 장고 교재 
+
+복습 + 클래스 + HTML 먼저 배우고 장고 들어감
+
+#설치
+google - python - windows
+Python 3.5.4 - 2017-08-08 
+Download Windows x86-64 executable installer
+
+https://wikidocs.net/28 - 점프투파이썬 교재
+오른쪽 위에 wikidocs 클릭
+
+www.w3schools.com
+
+HTML
+비주얼스튜디오 - 파일 - 새로만들기 - 파일 - HTML문서 
+

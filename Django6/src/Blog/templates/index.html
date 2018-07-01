@@ -1,0 +1,45 @@
+{% extends 'Blog/templates/base.html' %}
+<!-- extends : 기존 HTML들을 확장하는 것을 명시. 해당 HTML파일의 block 부분만 수정 가능 -->
+
+{% block content %}
+
+	<!-- page_obj : 이전, 다음 페이지에 대한 정보를 가진 객체 -->
+	{% if page_obj.has_previous %}	<!-- 이전페이지가 존재하는지 -->
+		<a href="?page={{page_obj.previous_page_number}}">이전페이지</a>
+	{% endif %}
+	{% if page_obj.has_next %}	<!-- 다음페이지가 존재하는지 -->
+		<a href="?page={{page_obj.next_page_number}}">다음페이지</a>
+	{% endif %}
+	<!-- ? 넣어줘야 GET방식으로 -->
+	<br>
+	<table style="width:100%">
+  		<tr>
+  			<th>글번호</th>
+  			<th>제목</th>
+  			<th>작성자</th>
+  			<th>날짜</th>
+  		</tr>
+  		{% for post in list %}	<!-- 아까 view에서 'list'라는 이름에 객체들을 담아서 보냄 -->
+  			<tr>
+  				<td>
+  					{{post.id}}	<!-- id는 자동으로 생성 -->
+  				</td>
+  				<td>
+  					<a href="{% url 'Blog:detail' post.id %}">{{post.headline}}</a>
+  				</td>
+  				<td>
+  					{{post.author.username}}
+  				</td>
+  				<td>
+  					{{post.pub_date}}
+  				</td>
+  			</tr>
+  		{% endfor %}
+	</table>
+	
+	<a href="{% url 'Blog:posting' %}">글쓰기</a>
+
+{% endblock %}
+
+
+

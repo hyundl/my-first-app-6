@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<!-- 로그인 여부에 따른 링크 보여주기 -->
+	<!-- 템플릿에서 로그인 여부 확인시 user변수 이용함 -->
+	<!-- 로그인된 유저의 ID추출 : user.username -->
+	<!-- 로그인 여부 확인 : user.is_authenticated - True, False 반환 -->
+	{% if user.is_authenticated %}
+		<p>{{ user.username }}님 환영합니다</p>
+		<a href="{% url 'customlogin:logout'%}">로그아웃</a>
+	{% else %}
+		<a href="{% url 'customlogin:signup' %}">회원가입 | </a>
+		<a href="{% url 'customlogin:signin' %}">로그인</a>
+	{% endif %}
+	<br>
+	<hr>
+
+	<!-- HTML 파일에서 파이썬 코드를 삽입할 수 있음 for ~ in , if문 외 dJango에서 만든 함수 사용 가능 -->
+	<!-- 단, 함수를 사용할 때 소괄호 생략 -->
+	<!-- EX) 파이썬 코드 Question.objects.all() => HTML내의 파이썬 코드 Question.objects.all -->
+	<!-- index 뷰 함수에서 question_list에 넣은 값을 변수처럼 사용 -->
+	{% for question in question_list %} <!-- 문법을 쓸때  -->
+		<!-- {{ question.question_text }}  --><!-- 값을 꺼낼때 -->
+		<a href="{% url 'vote:detail' question.id %}">{{ question.question_text }}</a>
+		<!-- url '문자열' '해당url에 필요한 값' -->
+		<br>
+	{% endfor %}
+	<!-- if 사용시 endif로 영역 지정, for 사용시 endfor로 영역 지정 -->
+	
+	<br>
+	<a href="{% url 'vote:registerQ' %}">질문 등록하기</a>
+	<br>
+	
+</body>
+</html>
+
+
+

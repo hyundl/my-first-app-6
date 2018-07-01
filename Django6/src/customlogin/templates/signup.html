@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>회원가입</h1>
+	
+	{% if error %}
+		<p><b>{{error}}</b></p>
+	{% endif %}
+	
+	<form action="" method="POST">
+	<!-- action은 비워놓기. 요청을 하면 같은 url에서 POST방식 처리 해줘야하니까 -->
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="회원가입">
+	</form>
+</body>
+</html>
